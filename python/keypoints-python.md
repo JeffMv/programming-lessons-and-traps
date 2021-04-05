@@ -1,3 +1,5 @@
+[toc]
+
 
 
 ### Variables
@@ -22,4 +24,35 @@ print(list(map(isGreaterThanRef, [12,13,11,10,14])))
 #> [False, True, False, False, True]
 #> [True, True, True, True, True]
 ```
+
+
+
+#### Static variables in functions/methods
+
+```python
+def myfoo(x):
+    myfoo.t = x
+    if myfoo.t > 1000:
+        myfoo.z = x * x
+    else:
+        myfoo.z = -getattr(myfoo,"z", 1)
+    return myfoo.t + myfoo.z
+
+
+print(myfoo(1200))
+print(f"myfoo::   t: {myfoo.t},  z: {myfoo.z}")
+print(myfoo(10))
+print(f"myfoo::   t: {myfoo.t},  z: {myfoo.z}")
+print(myfoo(15))
+print(f"myfoo::   t: {myfoo.t},  z: {myfoo.z}")
+print(myfoo(1500))
+print(f"myfoo::   t: {myfoo.t},  z: {myfoo.z}")
+print(myfoo(10))
+print(f"myfoo::   t: {myfoo.t},  z: {myfoo.z}")
+
+getattr(myfoo,"z", None)
+getattr(myfoo,"r","jjj")
+```
+
+
 
