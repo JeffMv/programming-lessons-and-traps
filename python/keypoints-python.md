@@ -27,6 +27,30 @@ print(list(map(isGreaterThanRef, [12,13,11,10,14])))
 
 
 
+#### Scopes
+
+```python
+def bar():
+    ab = 12
+    def baz():
+        nonlocal ab
+        previous = ab
+        ab = -222
+        return ab, previous
+    print(ab)
+    print(baz())
+    print(ab)
+
+bar()
+#> 12
+#> (-222, 12)
+#> -222
+```
+
+
+
+
+
 #### Static variables in functions/methods
 
 ```python
