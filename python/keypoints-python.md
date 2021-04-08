@@ -53,6 +53,8 @@ bar()
 
 #### Static variables in functions/methods
 
+There are no proper static variables for functions and methods in Python. But the feature can be partially emulated, so see the warnings and notes.
+
 ```python
 def myfoo(x):
     myfoo.t = x
@@ -78,5 +80,40 @@ getattr(myfoo,"z", None)
 getattr(myfoo,"r","jjj")
 ```
 
+**NOTE**: unlike *docstrings*, these "static" members are only available AFTER the function has been called since this is just a basic expression.
+Hence:
 
+```python
+def myfoo(x):
+    # ...
 
+getattr(myfoo, "t")  # raises an exception, because 'myfoo.t = x' has not been executed
+```
+
+Also note that these variables can be modified outside of the function/method, so be wary of it. Example:
+
+```python
+def myfoo(x):
+    # ...
+
+myfoo("test")
+print(getattr(myfoo, "t"))  # prints "test"
+myfoo.t = "hello"
+print(getattr(myfoo, "t"))  # prints "hello"
+```
+
+*The case of objects and classes*
+
+```python
+## When dealing with objects, classes and methods, you have to discern several different things
+
+class Foo():
+    def bar(self):
+        # ...
+
+afoo = Foo()
+
+# these are not the same
+Foo.bar.baz  #< ...
+afoo.bar.baz  #< ...
+```
