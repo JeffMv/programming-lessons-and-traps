@@ -54,6 +54,34 @@ dependencies:
 
 
 
+### Running / Deploying
+
+#### Deploying
+
+
+
+##### Compiling Windows
+
+##### Export binary windows
+
+To Compile and export for the web:
+
+- The command `flutter run --release` compiles to release mode.
+
+
+
+This answer about "[How can I run flutter web app without internet connection](https://stackoverflow.com/questions/73109896/how-can-i-run-flutter-web-app-without-internet-connection)":
+
+- ```bash
+  flutter build web --release --web-renderer html
+  ```
+
+
+
+##### Running
+
+###### Add firefox as device when running flutter web
+
 - [Add firefox as device when running flutter web](https://stackoverflow.com/questions/71517888/add-firefox-as-device-when-running-flutter-web)
 
 
@@ -67,6 +95,10 @@ Then you can open the url where lib/main.dart is served (it is shown on console)
 
 
 ----
+
+
+
+###### How can I run flutter web app without internet connection
 
 - [How can I run flutter web app without internet connection](https://stackoverflow.com/questions/73109896/how-can-i-run-flutter-web-app-without-internet-connection)
 
