@@ -78,7 +78,41 @@ This answer about "[How can I run flutter web app without internet connection](h
 
 
 
-##### Running
+Build for a subfolder (instead of the root)
+
+- ```dart
+  flutter build web --base-href "/path/"
+  ```
+
+
+
+##### Using Skia or CanvasKit
+
+This question : "[How to use Skia / CanvasKit in Flutter Web?](https://stackoverflow.com/questions/64583461/how-to-use-skia-canvaskit-in-flutter-web)"
+
+You can enable **CanvasKit / Skia** in **Flutter Web** by supplying a Dart environment constant:
+
+```dart
+flutter run -d chrome --dart-define=FLUTTER_WEB_USE_SKIA=true
+```
+
+The `flutter` tools now have a good shortcut for it:
+
+```dart
+flutter run -d chrome --web-renderer canvaskit
+```
+
+The **`--dart-define=FLUTTER_WEB_USE_SKIA=true`** parameter will set the constant to use Skia. You will also need to supply it to `flutter build web`:
+
+```dart
+flutter build web --web-renderer canvaskit
+```
+
+[Learn more about **web renderers in Flutter**](https://flutter.dev/docs/development/tools/web-renderers).
+
+
+
+#### Running
 
 ###### Add firefox as device when running flutter web
 
